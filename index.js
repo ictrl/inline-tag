@@ -14,8 +14,8 @@ const updateOutput = (text) => {
    input = document.getElementById("input").value;
 
    let output = input.split("");
-
-   let sortedTags = tags.sort((a, b) => a.offset - b.offset);
+   let sortedTags =  [... tags]
+    sortedTags = sortedTags.sort((a, b) => a.offset - b.offset);
 
    for (let idx = 0; idx < sortedTags.length; idx++) {
      const { length, offset } = sortedTags[idx];
@@ -68,7 +68,7 @@ document.getElementById("input").addEventListener("keydown", async ({ key: userI
         }
       }
     }
-    updateOutput();
+    // updateOutput();
   } catch (error) {
     console.error(error);
   }
@@ -83,4 +83,5 @@ const log = (params) => {
     const tag = tags[index];
     console.log(tag);
   }
+  updateOutput();
 };
